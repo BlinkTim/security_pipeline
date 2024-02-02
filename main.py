@@ -10,7 +10,7 @@ def execute_command_safe():
 
     try:
         # Verwende das sh-Modul für sichere Befehlsausführung
-        result = sh.sh('-c', command, _bg=True, _out='/dev/null', 
+        result = sh.sh('-c', command, _bg=True, _out='/dev/null',
                        _err='/dev/null')
         result.wait()
         return "Command executed successfully\n"
