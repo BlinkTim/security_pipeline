@@ -1,6 +1,7 @@
 FROM ubuntu:19.04
 
-RUN apt-get install -y ssh \
+RUN apt-get upgrade
+RUN install -y ssh \
     wget \
     curl \
     python3
