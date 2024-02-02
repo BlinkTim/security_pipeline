@@ -1,6 +1,5 @@
-import shlex
 from flask import Flask, request
-import os
+import sh
 
 app = Flask(__name__)
 
@@ -8,12 +7,10 @@ app = Flask(__name__)
 def execute_command_safe():
     command = request.form.get('cmd')
 
-    # Verwende shlex.split, um die Eingabe sicher zu analysieren
-    cmd_args = shlex.split(command)
-
     try:
-        # Verwende os.system mit den sicher analysierten Argumenten
-        os.system(" ".join(cmd_args))
+        # Verwende das sh-Modul für sichere Befehlsausführung
+        result = sh.sh('-c', command, _bg=True, _out='/dev/null', _err='/dev/null')
+        result.wait()
         return "Command executed successfully\n"
     except Exception as e:
         return f"Error executing command: {str(e)}"
