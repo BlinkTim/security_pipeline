@@ -3,6 +3,7 @@ import sh
 
 app = Flask(__name__)
 
+
 @app.route('/execute_safe', methods=['POST'])
 def execute_command_safe():
     command = request.form.get('cmd')
@@ -14,6 +15,7 @@ def execute_command_safe():
         return "Command executed successfully\n"
     except Exception as e:
         return f"Error executing command: {str(e)}"
+
 
 if __name__ == '__main__':
     # Ändere host auf '127.0.0.1' anstatt '0.0.0.0'
