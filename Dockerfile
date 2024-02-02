@@ -4,7 +4,7 @@ RUN apt-get upgrade
 RUN install ssh \
     wget \
     curl \
-    python3
+    python
 
 COPY . /app
 
