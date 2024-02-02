@@ -4,6 +4,9 @@ import os
 import subprocess
 import pickle
 
+# Example command without shell=True
+subprocess.run(["ls", "-l"])
+
 app = Flask(__name__)
 
 @app.route('/exec', methods=['GET'])
