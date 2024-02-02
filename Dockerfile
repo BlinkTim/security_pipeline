@@ -4,10 +4,10 @@ RUN apt-get upgrade
 RUN install ssh \
     wget \
     curl \
-    python
+    python3 \
 
 COPY . /app
 
 RUN chmod -R 777 /app
 
-CMD ["python", "/app/run.py"]
+CMD ["python3", "/app/run.py"]
