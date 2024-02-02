@@ -17,10 +17,13 @@ def execute_command_safe():
     except Exception as e:
         return f"Error executing command: {str(e)}"
 def upload_file():
-    # Unsichere Deserialisierung von Benutzereingaben
-    file = request.files['file'].read()
-    data = pickle.loads(file)
-    return "Datei hochgeladen\n"
+    try:
+        # Verwende json.loads für sichere Deserialisierung
+        data = request.files['file'].read()
+        json_data = json.loads(data)
+        return "Datei hochgeladen\n"
+    except json.JSONDecodeError as e:
+        return f"Error decoding JSON: {str(e)}"
 
 @app.route('/run', methods=['POST'])
 def run_command():
