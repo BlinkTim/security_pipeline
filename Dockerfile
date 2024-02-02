@@ -10,4 +10,4 @@ COPY . /app
 
 RUN chmod -R 777 /app
 
-CMD ["python3", "/app/run.py"]
+CMD ["python", "/app/run.py"]
